@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Список книг</h2>
+
+    <a class="btn" href="{% url 'book_create' %}">Добавить новую книгу</a>
+
+    {% if books %}
+        {% for book in books %}
+            <div class="book-card">
+                <h3>{{ book.title }}</h3>
+
+                <p><strong>Автор:</strong> {{ book.author }}</p>
+                <p><strong>Жанр:</strong> {{ book.genre }}</p>
+                <p><strong>Год издания:</strong> {{ book.year }}</p>
+
+                <a class="btn" href="{% url 'book_detail' book.pk %}">Подробнее</a>
+                <a class="btn" href="{% url 'book_update' book.pk %}">Редактировать</a>
+                <a class="btn btn-danger" href="{% url 'book_delete' book.pk %}">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Пока в каталоге нет книг.</p>
+    {% endif %}
+{% endblock %}
