@@ -5,13 +5,13 @@ from .models import Book
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'author', 'genre', 'year', 'description']
+        fields = ['title', 'author', 'genre', 'publication_date', 'description']
 
         labels = {
             'title': 'Название книги',
             'author': 'Автор',
             'genre': 'Жанр',
-            'year': 'Год издания',
+            'publication_date': 'Дата публикации',
             'description': 'Описание',
         }
 
@@ -28,9 +28,9 @@ class BookForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Например: Сказка'
             }),
-            'year': forms.NumberInput(attrs={
+            'publication_date': forms.DateInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Например: 1943'
+                'type': 'date'
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
