@@ -9,5 +9,5 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     publication_date = models.DateField(verbose_name='Дата публикации', null=True, blank=True)
 
-    def str(self):
+    def __str__(self):
         return self.title 
